@@ -8,6 +8,7 @@
 		<result column="AGE" jdbcType="INTEGER" property="age" />
 	</resultMap>
 	<select id="selectAll" resultMap="userMap">
+	<!-- USERは予約語なので""が必要 -->
 		SELECT ID, NAME, AGE FROM "USER"
 	</select>
 </mapper>
