@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.co.trainocamp.demo.mybatis.mapper.CommentMapper">
+	<resultMap id="commentMap" type="jp.co.trainocamp.demo.mybatis.entity.Comment">
+		<result column="id" jdbcType="INTEGER" property="id" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="content" jdbcType="VARCHAR" property="content" />
+		<result column="article_id" jdbcType="INTEGER" property="articleId" />
+	</resultMap>
+	<select id="findByArticleId" resultMap="commentMap">
+		SELECT id, name, content FROM comments WHERE article_id = #{articleId}
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO comments(name, content, article_id)
+		VALUES(#{name}, #{content}, #{articleId})
+	</insert>
+	
+	<delete id="deleteByArticleId">
+		DELETE FROM comments WHERE article_id = #{articleId}
+	</delete>
+	
+</mapper>

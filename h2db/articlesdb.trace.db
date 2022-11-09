@@ -1,0 +1,20 @@
+2022-11-09 15:28:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: テーブル "ARTICLES" が見つかりません
+Table "ARTICLES" not found; SQL statement:
+SELECT id, name, content FROM articles [42102-214]
+2022-11-09 15:29:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: テーブル "ARTICLES" が見つかりません
+Table "ARTICLES" not found; SQL statement:
+SELECT id, name, content FROM articles [42102-214]
+2022-11-09 15:30:43 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: テーブル "ARTICLES" が見つかりません
+Table "ARTICLES" not found; SQL statement:
+SELECT id, name, content FROM ARTICLES [42102-214]
+2022-11-09 15:31:29 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: テーブル "ARTICLES" が見つかりません
+Table "ARTICLES" not found; SQL statement:
+SELECT id, name, content FROM ARTICLES [42102-214]
+2022-11-09 15:31:34 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: テーブル "ARTICLES" が見つかりません
+Table "ARTICLES" not found; SQL statement:
+SELECT id, name, content FROM ARTICLES [42102-214]
