@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.co.trainocamp.demo.mybatis.mapper.ArticleCommentMapper">
+	<resultMap id="articleCommentMap" type="jp.co.trainocamp.demo.mybatis.entity.Article">
+		<id property="id" column="id"/>
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="content" jdbcType="VARCHAR" property="content" />
+		<collection property="commentList" ofType="jp.co.trainocamp.demo.mybatis.entity.Comment">
+			<id property="id" column="c_id" />
+			<result column="c_name" jdbcType="VARCHAR" property="name" />
+			<result column="c_content" jdbcType="VARCHAR" property="content" />
+			<result column="article_id" jdbcType="INTEGER" property="articleId" />
+		</collection>
+	</resultMap> 
+	
+	<select id="findArticleComment" resultMap="articleCommentMap">
+		SELECT a.id, a.name, a.content, c.id as c_id, c.name as c_name,
+			c.content as c_content, c.article_id 
+		FROM articles as a 
+		LEFT OUTER JOIN comments as c 
+		ON a.id = c.article_id 
+		ORDER BY a.id DESC
+	</select>
+	
+</mapper>
+

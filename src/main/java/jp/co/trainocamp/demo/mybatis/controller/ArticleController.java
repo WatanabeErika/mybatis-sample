@@ -14,6 +14,7 @@ import jp.co.trainocamp.demo.mybatis.entity.Article;
 import jp.co.trainocamp.demo.mybatis.entity.Comment;
 import jp.co.trainocamp.demo.mybatis.form.ArticleForm;
 import jp.co.trainocamp.demo.mybatis.form.CommentForm;
+import jp.co.trainocamp.demo.mybatis.mapper.ArticleCommentMapper;
 import jp.co.trainocamp.demo.mybatis.mapper.ArticleMapper;
 import jp.co.trainocamp.demo.mybatis.mapper.CommentMapper;
 
@@ -24,6 +25,9 @@ public class ArticleController {
 	
 	@Autowired
 	private CommentMapper commentMapper;
+	
+	@Autowired
+	private ArticleCommentMapper articleCommentMapper;
 	
 	@ModelAttribute
 	private ArticleForm setUpForm() {
@@ -38,15 +42,15 @@ public class ArticleController {
 	@GetMapping("/index")
 	public String index(Model model) {
 		
-		List<Article> articleList =articleMapper.selectAll();
+//		List<Article> articleList =articleMapper.selectAll();
+//		articleList.forEach(article -> {
+//			List<Comment> commentList = commentMapper.findByArticleId(article.getId());
+//			article.setCommentList(commentList);
+//		});
 		
-		articleList.forEach(article -> {
-			List<Comment> commentList = commentMapper.findByArticleId(article.getId());
-			article.setCommentList(commentList);
-		});
+		List<Article> articleList= articleCommentMapper.findArticleComment();
 		
 		model.addAttribute("articles", articleList);
-		
 		
 		return "article-comment";
 	}
@@ -56,6 +60,7 @@ public class ArticleController {
 		Article article = new Article();
 		BeanUtils.copyProperties(form, article);
 		articleMapper.insert(article);
+		
 		return "redirect:/index";
 	}
 	

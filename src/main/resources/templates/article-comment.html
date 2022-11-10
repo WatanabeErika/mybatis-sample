@@ -23,8 +23,7 @@
 		コメント者名：<span th:text="${comment.name}"></span><br>
 		コメント内容：<br>
 		<span th:text="${comment.content}"></span><br>
-	
-</span><br>
+	</span><br>
 <form th:action="@{/commentresult}" method="post" th:object="${commentForm}">
 <input type="hidden" name="id" th:value="${article.id}">
 	コメント者名：<input type="text" name="name" th:filed="*{name}"><br>
