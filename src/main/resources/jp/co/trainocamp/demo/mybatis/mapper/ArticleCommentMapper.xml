@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="jp.co.trainocamp.demo.mybatis.mapper.ArticleCommentMapper">
+
+<!-- １対多のテーブル結合 -->
 	<resultMap id="articleCommentMap" type="jp.co.trainocamp.demo.mybatis.entity.Article">
 		<id property="id" column="id"/>
 		<result column="name" jdbcType="VARCHAR" property="name" />
