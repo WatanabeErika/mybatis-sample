@@ -39,15 +39,27 @@ public class ArticleController {
 		return new CommentForm();
 	}
 	
+	/**
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/index")
 	public String index(Model model) {
 		
+		/**
+		 * バラバラのxmlファイルの記述
+		 *
+		 */
 //		List<Article> articleList =articleMapper.selectAll();
 //		articleList.forEach(article -> {
 //			List<Comment> commentList = commentMapper.findByArticleId(article.getId());
 //			article.setCommentList(commentList);
 //		});
 		
+		/**
+		 * テーブル結合した場合の記述
+		 *
+		 */
 		List<Article> articleList= articleCommentMapper.findArticleComment();
 		
 		model.addAttribute("articles", articleList);
